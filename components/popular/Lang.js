@@ -10,7 +10,7 @@ function Lang (props) {
 Lang.propTypes = {
     name: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
-    class: PropTypes.string.isRequired
+    class: PropTypes.string
 };
 
 module.exports = Lang;

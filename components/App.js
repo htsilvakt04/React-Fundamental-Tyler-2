@@ -4,7 +4,10 @@ let Popular = require('./popular/Popular');
 class App extends React.Component {
     render () {
         return (
-            <div>
+            // navbar
+
+            // Router which wrap all components related to the link above
+            <div className='container'>
                 <Popular/>
             </div>
         )
