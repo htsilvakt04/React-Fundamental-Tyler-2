@@ -43,7 +43,6 @@ class Popular extends React.Component {
                 {this.state.repos
                     ? <RepoList list={this.state.repos}/>
                     : <p>Loading...</p>}
-
             </div>
         )
     }

@@ -7,6 +7,9 @@ ul {
 li {
     list-style-type: none;
 }
+a {
+    text-decoration: none;
+}
 .selected {
     color: salmon;
 }
@@ -27,4 +30,30 @@ li {
 .lang-wrapper li {
     font-weight: bold;
     cursor: pointer;
+}
+.popular-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.popular-item {
+    margin: 20px;
+    text-align: center;
+}
+.popular-rank {
+    font-size: 22px;
+    font-weight: bold;
+}
+.space-list-item {
+    margin-bottom: 7px;
+}
+.space-list-item a {
+    color: salmon
+}
+.avatar {
+    width: 150px;
+    border-radius: 50%;
+
 }
