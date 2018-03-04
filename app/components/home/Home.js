@@ -5,7 +5,7 @@ function Home (props) {
     return (
         <div>
             <h1 className='battle-text'>Github Battle: Battle your friends... and stuff.</h1>
-            <Link exact to='/battle'>Battle</Link>
+            <Link to='/battle'>Battle</Link>
         </div>
     )
 }

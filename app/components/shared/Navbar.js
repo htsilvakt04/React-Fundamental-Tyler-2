@@ -11,7 +11,7 @@ function Navbar (props) {
                 <NavLink to='/popular' activeClassName='active'>Popular</NavLink>
             </li>
             <li>
-                <NavLink to='/battle' activeClassName='active'>Battle</NavLink>
+                <NavLink exact to='/battle' activeClassName='active'>Battle</NavLink>
             </li>
 
         </ul>
