@@ -3,7 +3,7 @@ let NavLink = require('react-router-dom').NavLink;
 
 function Navbar (props) {
     return (
-        <ul className='navbar'>
+        <ul className='nav'>
             <li>
                 <NavLink exact to='/' activeClassName='active'>Home</NavLink>
             </li>
@@ -13,7 +13,6 @@ function Navbar (props) {
             <li>
                 <NavLink exact to='/battle' activeClassName='active'>Battle</NavLink>
             </li>
-
         </ul>
     );
 }

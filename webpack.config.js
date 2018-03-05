@@ -4,7 +4,8 @@ module.exports = {
     entry: './app/index.js',
     output: {
         path:  path.resolve(__dirname, 'dist'),
-        filename: 'silva.bundle.js'
+        filename: 'silva.bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -16,5 +17,9 @@ module.exports = {
         new HTML({
             template: './app/index.html'
         })
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true
+    }
+
 };
