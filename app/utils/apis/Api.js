@@ -6,7 +6,6 @@ let setting ={
 
 
 module.exports = {
-
     getHottestRepos: function  (lang) {
         let url = window.encodeURI(
             'https://api.github.com/search/repositories?q=stars:>1+language:' + lang +
