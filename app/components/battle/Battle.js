@@ -42,8 +42,7 @@ class Battle extends React.Component {
             playerTwoImg = this.state.playerTwoImg,
             playerOneName = this.state.playerOneName,
             playerTwoName = this.state.playerTwoName;
-        let condition = !playerOneImg || !playerTwoImg;
-        let style = {marginTop: '100px', display: (condition ? 'none' : 'block')};
+
         let linkToBattleResult = {
             pathname: this.props.location.pathname + '/results',
             search: '?playerOne=' + playerOneName + '&playerTwo=' + playerTwoName
@@ -59,9 +58,11 @@ class Battle extends React.Component {
                         ? <PlayerInfo onClick={this.handleReset} img={playerTwoImg} username={playerTwoName} id='playerTwo'/>
                         : <PlayerInputForm label='Player Two' onSubmit={this.handleSubmit} id='playerTwo'/>}
                 </div>
-                <Link to={linkToBattleResult}  disabled={condition} style={style} className='button row'>
-                    Battle
-                </Link>
+                {playerOneImg && playerTwoImg &&
+                    <Link to={linkToBattleResult} style={{marginTop: '100px'}} className='button row'>
+                        Battle
+                    </Link>}
+
             </div>
         )
     }
