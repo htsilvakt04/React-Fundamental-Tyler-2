@@ -4,6 +4,27 @@ let setting ={
     clientSecret: '6a805d0abd33ed3f74cc9ff6ebdf0e924a52fab7'
 };
 
+function getRepos(playerName) {
+    let url = '';
+    return axios.get(url).then(response => {
+        return response.data;
+    });
+}
+function calculareScore(repos) {
+    return 'score here: will be number';
+}
+
+function calculateScoreAndReturnDataOfUser (playerName) {
+
+    return getRepos(playerName).then(repo => {
+        let score = calculareScore(repo);
+
+        return {
+            score: score,
+            info: repo
+        }
+    })
+}
 
 module.exports = {
     getHottestRepos: function  (lang) {
@@ -15,6 +36,14 @@ module.exports = {
         return axios.get(url).then(response => {
             return response.data.items; // array of repos
         });
+    },
+    getBattleResult: function (playerOne, playerTwo) {
+        return Promise.all([
+            calculateScoreAndReturnDataOfUser(playerOne),
+            calculateScoreAndReturnDataOfUser(playerTwo),
+        ]).then(data => {
+            return data;
+        })
     }
 
 };
