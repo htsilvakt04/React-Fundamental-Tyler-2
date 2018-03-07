@@ -1,9 +1,12 @@
 let React = require('react');
 let PropTypes = require('prop-types');
 
-function DisplayWinLose () {
+function DisplayWinLose (props) {
     return (
-        <div>DIsplay win-lose component</div>
+        <div>
+            <h2>Winner is: {props.winner.info.name} with score: {props.winner.score}</h2>
+            <h2>Loser is: {props.loser.info.name} with score: {props.loser.score}</h2>
+        </div>
     )
 }
 

@@ -34,7 +34,6 @@ class ResultBattle extends React.Component {
     }
 
     render () {
-        let urlInfo = this.props.location;
         return (
             <div>
                 {!this.state.loading
