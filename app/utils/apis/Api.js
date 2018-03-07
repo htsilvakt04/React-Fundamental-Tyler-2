@@ -29,7 +29,10 @@ function calculateScore(profile, repos) {
     return (followers * 3) + startCount;
 
 }
-
+function handleError(error) {
+    console.log(error);
+    return null;
+}
 function calculateScoreAndReturnDataOfUser (playerName) {
 
     return Promise.all([
@@ -39,9 +42,9 @@ function calculateScoreAndReturnDataOfUser (playerName) {
         let profile = data[0];
         let repos = data[1];
 
-        let score = calculateScore(profile, repos);
+        let totalScore = calculateScore(profile, repos);
         return {
-            score: score,
+            score: totalScore,
             info: profile
         }
     });
@@ -58,13 +61,10 @@ module.exports = {
             return response.data.items; // array of repos
         });
     },
-    getBattleResult: function (playerOne, playerTwo) {
-        return Promise.all([
-            calculateScoreAndReturnDataOfUser(playerOne),
-            calculateScoreAndReturnDataOfUser(playerTwo),
-        ]).then(data => { // return array of player which first element is a winner and second is for the loser
+    getBattleResult: function (players) {
+        return Promise.all(players.map(calculateScoreAndReturnDataOfUser)).then(data => { // return array of player which first element is a winner and second is for the loser
             return data.sort((a, b) => b.score - a.score);
-        })
+        }).catch(handleError);
     }
 
 };

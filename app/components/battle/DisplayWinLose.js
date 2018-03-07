@@ -1,11 +1,27 @@
 let React = require('react');
 let PropTypes = require('prop-types');
 
+function WinLosePlayer(props) {
+    return (
+        <div>
+            {JSON.stringify(props, null, 2)}
+        </div>
+    );
+}
+
+WinLosePlayer.propTypes = {
+    data: PropTypes.shape({
+        score: PropTypes.number,
+        info: PropTypes.object
+    }).isRequired,
+    label: PropTypes.string.isRequired
+};
+
 function DisplayWinLose (props) {
     return (
         <div>
-            <h2>Winner is: {props.winner.info.name} with score: {props.winner.score}</h2>
-            <h2>Loser is: {props.loser.info.name} with score: {props.loser.score}</h2>
+            <WinLosePlayer data={props.winner} label='Winner'/>
+            <WinLosePlayer data={props.loser} label='Loser'/>
         </div>
     )
 }
