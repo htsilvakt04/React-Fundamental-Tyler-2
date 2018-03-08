@@ -8,7 +8,7 @@ function WinLosePlayer(props) {
     let info = data.info;
     let score = data.score,
         img = data.info.avatar_url,
-        username = data.info.name;
+        username = data.info.login;
     return (
         <div>
             <h1 className='header'>{props.label}</h1>

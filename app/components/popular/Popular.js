@@ -4,7 +4,7 @@ let Api = require('../../utils/apis/Api');
 
 let RepoList = require('./RepoList');
 let LangList = require('./LangList');
-
+let Loading = require('../shared/Loading');
 
 class Popular extends React.Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class Popular extends React.Component {
                 <LangList currentLang={this.state.selectedLang} onClick={this.updateLang}/>
                 {this.state.repos
                     ? <RepoList list={this.state.repos}/>
-                    : <p>Loading...</p>}
+                    : <Loading/>}
             </div>
         )
     }

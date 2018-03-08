@@ -133,3 +133,7 @@ a {
 .reset:hover {
     cursor: pointer;
 }
+.loading-label {
+    font-weight: bold;
+    font-size: 40px;
+}

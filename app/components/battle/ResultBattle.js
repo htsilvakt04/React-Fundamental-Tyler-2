@@ -4,6 +4,7 @@ let Api = require('../../utils/apis/Api');
 let Link = require('react-router-dom').Link;
 
 let DisplayWinLose = require('./DisplayWinLose');
+let Loading = require('../shared/Loading');
 
 class ResultBattle extends React.Component {
     constructor(props) {
@@ -72,7 +73,7 @@ class ResultBattle extends React.Component {
             <div>
                 {!loading
                     ? <DisplayWinLose winner={winner} loser={loser}/>
-                    : <p>Loading...</p>  }
+                    : <Loading/>  }
             </div>
         )
     }
