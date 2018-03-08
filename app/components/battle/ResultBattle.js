@@ -69,7 +69,7 @@ class ResultBattle extends React.Component {
         }
 
         return (
-            <div className='row'>
+            <div>
                 {!loading
                     ? <DisplayWinLose winner={winner} loser={loser}/>
                     : <p>Loading...</p>  }

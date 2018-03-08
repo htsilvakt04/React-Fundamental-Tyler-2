@@ -6,14 +6,12 @@ function PlayerInfo (props) {
         <div className='user-info column'>
             <img src={props.img} className='avatar' alt="User Avatar"/>
             <p className='username'>@{props.username}</p>
-            <button className='reset' onClick={props.onClick.bind(null, props.id)}>Reset</button>
+            {props.children}
         </div>
     );
 }
 PlayerInfo.propTypes = {
     img: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
 };
 module.exports = PlayerInfo;

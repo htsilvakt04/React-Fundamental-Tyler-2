@@ -52,10 +52,12 @@ class Battle extends React.Component {
             <div className="battle-container">
                 <div className="row">
                     {playerOneImg
-                        ? <PlayerInfo onClick={this.handleReset} img={playerOneImg} username={playerOneName} id='playerOne'/>
+                        ? <PlayerInfo img={playerOneImg} username={playerOneName}>
+                                <button className='reset' onClick={this.handleReset.bind(null, 'playerOne')}>Reset</button></PlayerInfo>
                         : <PlayerInputForm label='Player One' onSubmit={this.handleSubmit} id='playerOne'/>}
                     {playerTwoImg
-                        ? <PlayerInfo onClick={this.handleReset} img={playerTwoImg} username={playerTwoName} id='playerTwo'/>
+                        ? <PlayerInfo img={playerTwoImg} username={playerTwoName}>
+                            <button className='reset' onClick={this.handleReset.bind(null, 'playerTwo')}>Reset</button></PlayerInfo>
                         : <PlayerInputForm label='Player Two' onSubmit={this.handleSubmit} id='playerTwo'/>}
                 </div>
                 {playerOneImg && playerTwoImg &&
