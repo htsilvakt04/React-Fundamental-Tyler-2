@@ -3,6 +3,8 @@ let setting ={
     clientID: '46641076941ca494908d',
     clientSecret: '6a805d0abd33ed3f74cc9ff6ebdf0e924a52fab7'
 };
+let params = `client_id=${setting.clientID}&client_secret=${setting.clientSecret}`;
+
 function countReposStar (repos) { // return a number which symbolize the count of star for all repos
     return repos.reduce((init, item) => {
         return init + item.stargazers_count;
@@ -10,20 +12,20 @@ function countReposStar (repos) { // return a number which symbolize the count o
 }
 
 function getProfile (playerName) {
-    let url = 'https://api.github.com/users/' + playerName + '?' + 'client_id=' + setting.clientID + '&client_secret=' + setting.clientSecret;
+    let url = `https://api.github.com/users/${playerName}?${params}` ;
 
     return axios.get(url).then(response => response.data);
 }
 
 function getRepos(playerName) {
-    let url = 'https://api.github.com/users/' + playerName + '/repos' + '?' + 'per_page=100' + '&client_id=' + setting.clientID + '&client_secret=' + setting.clientSecret;
+    let url = `https://api.github.com/users/${playerName}/repos?per_page=100&${params}`;
 
     return axios.get(url).then(response => {
         return response.data;
     });
 }
 function calculateScore(profile, repos) {
-    let followers = profile.followers;
+    let { followers } = profile;
     let startCount = countReposStar(repos);
 
     return (followers * 3) + startCount;
@@ -39,12 +41,11 @@ function calculateScoreAndReturnDataOfUser (playerName) {
         getProfile(playerName),
         getRepos(playerName)
     ]).then(data => {
-        let profile = data[0];
-        let repos = data[1];
+        let [profile, repos] = data;
 
-        let totalScore = calculateScore(profile, repos);
+        let score = calculateScore(profile, repos);
         return {
-            score: totalScore,
+            score,
             info: profile
         }
     });
