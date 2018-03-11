@@ -8,7 +8,7 @@ let webpack = require('webpack');
 // ugli
 
 let config  = {
-    entry: './app/index.js',
+    entry: [ 'babel-polyfill', './app/index.js' ],
     output: {
         path:  path.resolve(__dirname, 'dist'),
         filename: 'silva.bundle.js',
