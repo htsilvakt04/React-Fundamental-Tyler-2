@@ -2,11 +2,13 @@ let React = require('react');
 let PropTypes = require('prop-types');
 
 function PlayerInfo (props) {
+    let {img, username, children} = props;
+
     return (
         <div className='user-info column'>
-            <img src={props.img} className='avatar' alt="User Avatar"/>
-            <p className='username'>@{props.username}</p>
-            {props.children}
+            <img src={img} className='avatar' alt="User Avatar"/>
+            <p className='username'>@{username}</p>
+            {children}
         </div>
     );
 }

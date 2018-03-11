@@ -1,9 +1,9 @@
-let React = require('react');
-let Api = require('../../utils/apis/Api');
-let Link = require('react-router-dom').Link;
+const React = require('react');
+const Api = require('../../utils/apis/Api');
+const {Link} = require('react-router-dom');
 
-let PlayerInputForm = require('./PlayerInputForm');
-let PlayerInfo = require('./PlayerInfo');
+const PlayerInputForm = require('./PlayerInputForm');
+const PlayerInfo = require('./PlayerInfo');
 
 class Battle extends React.Component {
     constructor(props) {
@@ -16,32 +16,24 @@ class Battle extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReset = this.handleReset.bind(this);
-        this.handleBattle = this.handleBattle.bind(this);
     }
-    handleBattle () {
 
-    }
     handleReset (id) {
-        this.setState(() => {
-            let newState = {};
-            newState[id + 'Name'] = '';
-            newState[id + 'Img'] = null;
-            return newState;
-        })
+        this.setState(() => ({
+            [id + 'Name']: '',
+            [id + 'Img']: null
+        }))
     }
 
     handleSubmit (id, playerName) {
-        let newState = {};
-        newState[id + 'Name'] = playerName;
-        newState[id + 'Img'] = 'https://github.com/' + playerName + '.png?size=200';
-        this.setState(() => newState);
+        this.setState(() => ({
+            [id + 'Name']: playerName,
+            [id + 'Img']: `https://github.com/${playerName}.png?size=200`
+        }));
     }
 
     render () {
-        let playerOneImg = this.state.playerOneImg,
-            playerTwoImg = this.state.playerTwoImg,
-            playerOneName = this.state.playerOneName,
-            playerTwoName = this.state.playerTwoName;
+        let {playerOneImg, playerTwoImg, playerOneName, playerTwoName} = this.state;
 
         let linkToBattleResult = {
             pathname: this.props.location.pathname + '/results',
