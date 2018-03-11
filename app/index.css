@@ -9,6 +9,7 @@ li {
 }
 a {
     text-decoration: none;
+    color: #00d1b2;
 }
 .selected {
     color: salmon;
