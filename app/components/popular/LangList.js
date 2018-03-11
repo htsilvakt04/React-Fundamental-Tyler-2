@@ -6,12 +6,11 @@ let LangItem = require('./ListItem/LangItem');
 
 function LangList (props) {
     let languages = ['All','Javascript', 'Ruby', 'Java', 'Css', 'Python'];
+    let {currentLang, onClick} = props;
 
     return (
         <ul className='lang-wrapper'>
-            {languages.map(function (lang) {
-               return <LangItem key={lang} lang={lang} currentLang={props.currentLang} onClick={props.onClick}/>
-            })}
+            {languages.map( lang => (<LangItem key={lang} lang={lang} currentLang={currentLang} onClick={onClick}/>)  )}
         </ul>
     )
 }

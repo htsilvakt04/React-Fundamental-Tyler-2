@@ -3,10 +3,10 @@ let PropTypes = require('prop-types');
 let RepoListItem = require('./ListItem/RepoListItem');
 
 
-function RepoList (props) {
+function RepoList ({list: repoList}) {
     return (
         <ul className='popular-list'>
-            {props.list && props.list.map((repo, index) => {
+            {repoList && repoList.map((repo, index) => {
                 return (
                     <li key={repo.name} className='popular-item'>
                         <div className='popular-rank'>#{index + 1}</div>

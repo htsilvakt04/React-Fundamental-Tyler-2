@@ -1,9 +1,16 @@
 let React = require('react');
-
-function LangItem(props) {
+let PropTypes = require('prop-types');
+function LangItem({currentLang, lang, onClick}) {
     return (
-        <li className={props.currentLang === props.lang ? 'selected' : null} key={props.lang} onClick={props.onClick.bind(null, props.lang)}>{props.lang}</li>
+        <li className={currentLang === lang ? 'selected' : null} key={lang} onClick={onClick.bind(null, lang)}>{lang}</li>
     );
 }
+
+LangItem.propTypes = {
+    currentLang: PropTypes.string.isRequired,
+    lang: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+};
+
 
 module.exports = LangItem;

@@ -1,10 +1,10 @@
-let React = require('react');
-let PropTypes = require('prop-types');
-let Api = require('../../utils/apis/Api');
+const React = require('react');
+const PropTypes = require('prop-types');
+const Api = require('../../utils/apis/Api');
 
-let RepoList = require('./RepoList');
-let LangList = require('./LangList');
-let Loading = require('../shared/Loading');
+const RepoList = require('./RepoList');
+const LangList = require('./LangList');
+const Loading = require('../shared/Loading');
 
 class Popular extends React.Component {
     constructor(props) {
@@ -20,28 +20,22 @@ class Popular extends React.Component {
        this.updateLang(this.state.selectedLang);
     }
     updateLang (langName) {
-        this.setState((prevState, props) => {
-            return {
-                selectedLang: langName,
-                repos: null
-            }
-        });
+        this.setState(() => ({
+            selectedLang: langName, repos: null
+        }));
 
         Api.getHottestRepos(langName).then(repos => {
-           this.setState(function () {
-               return {
-                   repos: repos
-               }
-           })
+           this.setState(() => ({repos}) );
         });
     }
 
     render () {
+        let {selectedLang, repos} = this.state;
         return (
             <div className='container'>
-                <LangList currentLang={this.state.selectedLang} onClick={this.updateLang}/>
-                {this.state.repos
-                    ? <RepoList list={this.state.repos}/>
+                <LangList currentLang={selectedLang} onClick={this.updateLang}/>
+                {repos
+                    ? <RepoList list={repos}/>
                     : <Loading/>}
             </div>
         )
