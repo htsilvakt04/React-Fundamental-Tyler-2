@@ -1,7 +1,6 @@
-let React = require('react');
-let NavLink = require('react-router-dom').NavLink;
-
-function Navbar (props) {
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+export default function Navbar (props) {
     return (
         <ul className='nav'>
             <li>
@@ -16,5 +15,3 @@ function Navbar (props) {
         </ul>
     );
 }
-
-module.exports = Navbar;

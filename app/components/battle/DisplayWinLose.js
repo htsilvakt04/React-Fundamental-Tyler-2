@@ -1,6 +1,6 @@
-const React = require('react');
-const PropTypes = require('prop-types');
-const PlayerInfo = require('./PlayerInfo');
+import React from 'react';
+import {PropTypes} from 'prop-types';
+import PlayerInfo from './PlayerInfo';
 
 
 function WinLosePlayer({data, label}) {
@@ -52,4 +52,4 @@ DisplayWinLose.propTypes = {
         info: PropTypes.object
     })
 };
-module.exports = DisplayWinLose;
+export default DisplayWinLose;

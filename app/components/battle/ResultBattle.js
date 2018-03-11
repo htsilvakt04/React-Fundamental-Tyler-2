@@ -1,10 +1,10 @@
-const React = require('react');
-const queryParser = require('query-string');
-const Api = require('../../utils/apis/Api');
-const Link = require('react-router-dom').Link;
+import React from 'react';
+import queryParser from 'query-string';
+import {getBattleResult} from '../../utils/apis/Api';
+import {Link} from 'react-router-dom';
 
-const DisplayWinLose = require('./DisplayWinLose');
-const Loading = require('../shared/Loading');
+import DisplayWinLose from './DisplayWinLose';
+import Loading from '../shared/Loading';
 
 class ResultBattle extends React.Component {
     constructor(props) {
@@ -32,11 +32,9 @@ class ResultBattle extends React.Component {
         let {playerOne, playerTwo} = queryParser.parse(
             this.props.location.search
         );
-
-        Api.getBattleResult([playerOne, playerTwo]).then(([winner, loser]) => {
+        getBattleResult([playerOne, playerTwo]).then(([winner, loser]) => {
             // check error here
-            let hasError = this.isError(data);
-
+            let hasError = this.isError(winner);
             if(hasError === false) {
                  //data[0] === winner; data[1] === loser
                 this.setState(() => ({
@@ -70,4 +68,4 @@ class ResultBattle extends React.Component {
         )
     }
 }
-module.exports = ResultBattle;
+export default ResultBattle;

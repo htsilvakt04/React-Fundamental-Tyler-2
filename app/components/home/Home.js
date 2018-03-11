@@ -1,6 +1,6 @@
-const React = require('react');
-const Link = require('react-router-dom').Link;
-const PropTypes = require('prop-types');
+import React from 'react';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Home ({title, linkText}) {
     return (
@@ -23,4 +23,4 @@ Link.defaultProps = {
     to: '/battle'
 };
 
-module.exports = Home;
+export default Home;

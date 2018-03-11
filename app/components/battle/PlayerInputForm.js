@@ -39,5 +39,4 @@ PlayerInputForm.propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
 };
-
-module.exports = PlayerInputForm;
+export default PlayerInputForm;

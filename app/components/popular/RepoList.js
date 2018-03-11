@@ -3,7 +3,7 @@ let PropTypes = require('prop-types');
 let RepoListItem = require('./ListItem/RepoListItem');
 
 
-function RepoList ({list: repoList}) {
+export default function RepoList ({list: repoList}) {
     return (
         <ul className='popular-list'>
             {repoList && repoList.map((repo, index) => {
@@ -21,4 +21,3 @@ RepoList.propTypes = {
     list: PropTypes.array
 };
 
-module.exports = RepoList;

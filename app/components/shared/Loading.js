@@ -1,5 +1,5 @@
-const React = require('react');
-const PropTypes = require('prop-types');
+import React from 'react';
+import {PropTypes} from 'prop-types';
 
 class Loading extends React.Component {
     constructor(props) {
@@ -42,4 +42,4 @@ Loading.defaultProps = {
     style: {color: '#00D1B2', textAlign: 'center'},
     intervalTime: 200
 };
-module.exports = Loading;
+export default Loading;

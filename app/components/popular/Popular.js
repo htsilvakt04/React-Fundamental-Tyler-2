@@ -1,10 +1,10 @@
-const React = require('react');
-const PropTypes = require('prop-types');
-const Api = require('../../utils/apis/Api');
+import React from 'react';
+import {PropTypes} from 'prop-types';
+import {getHottestRepos} from '../../utils/apis/Api';
 
-const RepoList = require('./RepoList');
-const LangList = require('./LangList');
-const Loading = require('../shared/Loading');
+import RepoList from './RepoList';
+import LangList from './LangList';
+import Loading from '../shared/Loading';
 
 class Popular extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Popular extends React.Component {
             selectedLang: langName, repos: null
         }));
 
-        Api.getHottestRepos(langName).then(repos => {
+        getHottestRepos(langName).then(repos => {
            this.setState(() => ({repos}) );
         });
     }
@@ -41,4 +41,4 @@ class Popular extends React.Component {
         )
     }
 }
-module.exports = Popular;
+export default Popular;

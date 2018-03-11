@@ -1,7 +1,7 @@
-let React = require('react');
-let PropTypes = require('prop-types');
+import React from 'react';
+import {PropTypes} from 'prop-types';
 
-function PlayerInfo ({img, username, children}) {
+export default function PlayerInfo ({img, username, children}) {
     return (
         <div className='user-info column'>
             <img src={img} className='avatar' alt="User Avatar"/>
@@ -14,4 +14,3 @@ PlayerInfo.propTypes = {
     img: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
 };
-module.exports = PlayerInfo;

@@ -1,9 +1,8 @@
-const React = require('react');
-const Api = require('../../utils/apis/Api');
-const {Link} = require('react-router-dom');
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-const PlayerInputForm = require('./PlayerInputForm');
-const PlayerInfo = require('./PlayerInfo');
+import PlayerInputForm from './PlayerInputForm';
+import PlayerInfo from './PlayerInfo';
 
 class Battle extends React.Component {
     constructor(props) {
@@ -61,4 +60,5 @@ class Battle extends React.Component {
         )
     }
 }
-module.exports = Battle;
+
+export default Battle;
