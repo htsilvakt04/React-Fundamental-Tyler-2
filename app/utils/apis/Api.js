@@ -28,7 +28,7 @@ function calculateScore({ followers }, repos) {
     return (followers * 3) + countReposStar(repos);
 }
 
-let handleError = err =>console.log(err) ||  null;
+let handleError = (err) =>console.log(err) ||  null;
 
 function calculateScoreAndReturnDataOfUser (playerName) {
 
