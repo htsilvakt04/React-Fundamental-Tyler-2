@@ -1,19 +1,16 @@
-let React = require('react');
-let PropTypes = require('prop-types');
-let PlayerInfo = require('./PlayerInfo');
+const React = require('react');
+const PropTypes = require('prop-types');
+const PlayerInfo = require('./PlayerInfo');
 
 
-function WinLosePlayer(props) {
-    let data = props.data;
-    let info = data.info;
-    let score = data.score,
-        img = data.info.avatar_url,
-        username = data.info.login;
+function WinLosePlayer({data, label}) {
+    let {info, score} = data;
+
     return (
         <div>
-            <h1 className='header'>{props.label}</h1>
+            <h1 className='header'>{label}</h1>
             <h3 style={{textAlign: 'center'}}>Score: {score}</h3>
-            <PlayerInfo img={img} username={username}>
+            <PlayerInfo img={info.avatar_url} username={info.login}>
                 <ul className='space-list-item'>
                     {info.name && <li>{info.name}</li>}
                     {info.location && <li>{info.location}</li>}
@@ -36,11 +33,11 @@ WinLosePlayer.propTypes = {
     label: PropTypes.string.isRequired
 };
 
-function DisplayWinLose (props) {
+function DisplayWinLose ({winner, loser}) {
     return (
         <div className='row'>
-            <WinLosePlayer data={props.winner} label='Winner'/>
-            <WinLosePlayer data={props.loser} label='Loser'/>
+            <WinLosePlayer data={winner} label='Winner'/>
+            <WinLosePlayer data={loser} label='Loser'/>
         </div>
     )
 }

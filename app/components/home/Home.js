@@ -1,12 +1,12 @@
-let React = require('react');
-let Link = require('react-router-dom').Link;
-let PropTypes = require('prop-types');
+const React = require('react');
+const Link = require('react-router-dom').Link;
+const PropTypes = require('prop-types');
 
-function Home (props) {
+function Home ({title, linkText}) {
     return (
-        <div className='home-container  '>
-            <h1 className='battle-text'>{props.title}</h1>
-            <Link className='button'>{props.linkText}</Link>
+        <div className='home-container'>
+            <h1 className='battle-text'>{title}</h1>
+            <Link className='button'>{linkText}</Link>
         </div>
     )
 }

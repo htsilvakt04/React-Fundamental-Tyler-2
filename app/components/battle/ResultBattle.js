@@ -1,10 +1,10 @@
-let React = require('react');
-let queryParser = require('query-string');
-let Api = require('../../utils/apis/Api');
-let Link = require('react-router-dom').Link;
+const React = require('react');
+const queryParser = require('query-string');
+const Api = require('../../utils/apis/Api');
+const Link = require('react-router-dom').Link;
 
-let DisplayWinLose = require('./DisplayWinLose');
-let Loading = require('../shared/Loading');
+const DisplayWinLose = require('./DisplayWinLose');
+const Loading = require('../shared/Loading');
 
 class ResultBattle extends React.Component {
     constructor(props) {
@@ -20,45 +20,37 @@ class ResultBattle extends React.Component {
     isError (data) {
         let result = false;
         if (!data) {
-            this.setState(() => {
-                return {
-                    error: 'There was error occurred, please try again',
-                    loading: false
-                }
-            });
+            this.setState(() => ({
+                error: 'There was error occurred, please try again',
+                loading: false
+            }));
             result =  true;
         }
         return result;
     }
     componentDidMount () {
-        let players = queryParser.parse(
+        let {playerOne, playerTwo} = queryParser.parse(
             this.props.location.search
         );
 
-        Api.getBattleResult([players.playerOne, players.playerTwo]).then(data => {
+        Api.getBattleResult([playerOne, playerTwo]).then(([winner, loser]) => {
             // check error here
             let hasError = this.isError(data);
 
             if(hasError === false) {
                  //data[0] === winner; data[1] === loser
-                this.setState(function () {
-                     return {
-                         loading: false,
-                         winner: data[0],
-                         loser: data[1],
-                         error: null
-                     }
-                });
+                this.setState(() => ({
+                     loading: false,
+                     winner,
+                     loser,
+                     error: null
+                }));
             } // end if
         })
     }
 
     render () {
-        let error = this.state.error;
-        let winner = this.state.winner;
-        let loser = this.state.loser;
-        let loading = this.state.loading;
-
+        let {error, winner, loser, loading} = this.state;
         // check error here
         if (error) {
             return (

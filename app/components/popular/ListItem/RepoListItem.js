@@ -1,8 +1,7 @@
 let React = require('react');
 let PropTypes = require('prop-types');
 
-function RepoListItem (props) {
-    let repo = props.repo;
+function RepoListItem ({repo}) {
     return (
         <ul className='space-list-item'>
             <li>

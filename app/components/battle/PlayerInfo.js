@@ -1,9 +1,7 @@
 let React = require('react');
 let PropTypes = require('prop-types');
 
-function PlayerInfo (props) {
-    let {img, username, children} = props;
-
+function PlayerInfo ({img, username, children}) {
     return (
         <div className='user-info column'>
             <img src={img} className='avatar' alt="User Avatar"/>

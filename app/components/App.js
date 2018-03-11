@@ -1,13 +1,11 @@
-let React = require('react');
-let Popular = require('./popular/Popular');
-let Navbar = require('./shared/Navbar');
-let Home = require('./home/Home');
-let Battle = require('./battle/Battle');
-let ResultBattle = require('./battle/ResultBattle');
+const React = require('react');
+const Popular = require('./popular/Popular');
+const Navbar = require('./shared/Navbar');
+const Home = require('./home/Home');
+const Battle = require('./battle/Battle');
+const ResultBattle = require('./battle/ResultBattle');
 
-let Route = require('react-router-dom').Route;
-let Switch = require('react-router-dom').Switch;
-let Router = require('react-router-dom').BrowserRouter;
+const { Route, Switch, Router }= require('react-router-dom');
 
 
 class App extends React.Component {
@@ -21,9 +19,7 @@ class App extends React.Component {
                         <Route path='/popular' component={Popular} />
                         <Route exact path='/battle' component={Battle} />
                         <Route path='/battle/results' component={ResultBattle} />
-                        <Route render={function () {
-                            return <h1>404</h1>
-                        }}/>
+                        <Route render={ () => <h1>404</h1> }/>
                     </Switch>
                 </div>
             </Router>

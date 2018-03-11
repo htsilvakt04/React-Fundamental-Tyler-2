@@ -4,10 +4,8 @@ let PropTypes = require('prop-types');
 let LangItem = require('./ListItem/LangItem');
 
 
-function LangList (props) {
+function LangList ({currentLang, onClick}) {
     let languages = ['All','Javascript', 'Ruby', 'Java', 'Css', 'Python'];
-    let {currentLang, onClick} = props;
-
     return (
         <ul className='lang-wrapper'>
             {languages.map( lang => (<LangItem key={lang} lang={lang} currentLang={currentLang} onClick={onClick}/>)  )}
