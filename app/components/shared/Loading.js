@@ -1,5 +1,5 @@
-let React = require('react');
-let PropTypes = require('prop-types');
+const React = require('react');
+const PropTypes = require('prop-types');
 
 class Loading extends React.Component {
     constructor(props) {
@@ -10,19 +10,14 @@ class Loading extends React.Component {
     }
 
     componentDidMount () {
-        let stopper = this.props.label + '...';
+        const { label, intervalTime } = this.props;
+        let stopper = label + '...';
 
-        this.interval = setInterval(function () {
-            if (this.state.label === stopper) {
-                this.setState(() => {
-                    return {label: this.props.label}
-                })
-            } else {
-                this.setState((prevState)=> {
-                    return {label: prevState.label + '.'}
-                });
-            }
-        }.bind(this), this.props.intervalTime);
+        this.interval = setInterval(() => {
+            this.state.label === stopper
+                ? this.setState(() => ({label}))
+                : this.setState( prevState  => ({label: prevState.label + '.'}) )
+        }, intervalTime);
     }
 
     componentWillUnmount () {

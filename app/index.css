@@ -9,7 +9,7 @@ li {
 }
 a {
     text-decoration: none;
-    color: #00d1b2;
+    color: #1a1a1a;
 }
 .selected {
     color: salmon;
@@ -137,4 +137,7 @@ a {
 .loading-label {
     font-weight: bold;
     font-size: 40px;
+}
+.link-back {
+    color: salmon;
 }

@@ -64,7 +64,7 @@ class ResultBattle extends React.Component {
             return (
                 <div>
                     <p>{error}</p>
-                    <Link to='/battle'>Make New Match</Link>
+                    <Link className="link-back" to='/battle'>Make New Match</Link>
                 </div>
             );
         }
