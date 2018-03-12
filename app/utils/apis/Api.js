@@ -1,5 +1,3 @@
-import Axios from 'Axios';
-
 const setting = {
     clientID: '46641076941ca494908d',
     clientSecret: '6a805d0abd33ed3f74cc9ff6ebdf0e924a52fab7'
@@ -15,17 +13,16 @@ function countReposStar (repos) { // return a number which symbolize the count o
 
 async function getProfile (playerName) {
     let url = 'https://api.github.com/users/' + `${playerName}?${params}` ;
+    const profile =  await fetch(url);
 
-    const profile =  await Axios.get(url);
-
-    return profile.data;
+    return profile.json();
 }
 
 async function getRepos(playerName) {
     let url = 'https://api.github.com/users/' + `${playerName}/repos?per_page=100&${params}`;
-    const repos = await Axios.get(url);
+    const repos = await fetch(url);
 
-    return repos.data;
+    return repos.json();
 }
 
 function calculateScore({ followers }, repos) {
@@ -56,8 +53,10 @@ export async function getHottestRepos (lang) {
         'https://api.github.com/search/repositories?q=stars:>1+language:' + lang +
         '&sort=stars&order=desc&type=Repositories&' + params);
 
-    const {data} = await Axios.get(url).catch(handleError); // array of repos);
-    return data.items;
+    const data = await fetch(url).catch(handleError); // array of repos);
+    const repos = await data.json();
+
+    return repos.items;
 }
 
 export async function getBattleResult (players) {
