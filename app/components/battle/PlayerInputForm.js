@@ -2,24 +2,19 @@ let React = require('react');
 let PropTypes = require('prop-types');
 
 class PlayerInputForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            playerName: ''
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    state = {
+        playerName: ''
+    };
 
-    handleChange (event) {
+    handleChange = (event) => {
         this.setState({
             playerName: event.target.value
         });
-    }
-    handleSubmit (event) {
+    };
+    handleSubmit = (event) => {
         event.preventDefault();
         this.props.onSubmit(this.props.id, this.state.playerName);
-    }
+    };
     render () {
         let {playerName} = this.state;
         let {id, label} = this.props;
@@ -33,10 +28,11 @@ class PlayerInputForm extends React.Component {
             </div>
         )
     }
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired
+    }
 }
-PlayerInputForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-};
+
 export default PlayerInputForm;

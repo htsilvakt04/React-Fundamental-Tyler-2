@@ -7,17 +7,13 @@ import DisplayWinLose from './DisplayWinLose';
 import Loading from '../shared/Loading';
 
 class ResultBattle extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true,
-            winner: null,
-            loser: null,
-            error: null
-        };
-        this.isError = this.isError.bind(this);
+    state = {
+        loading: true,
+        winner: null,
+        loser: null,
+        error: null
     }
-    isError (data) {
+    isError = (data) => {
         let result = false;
         if (!data) {
             this.setState(() => ({

@@ -7,19 +7,14 @@ import LangList from './LangList';
 import Loading from '../shared/Loading';
 
 class Popular extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedLang: 'All',
-            repos: null
-        };
-        this.updateLang = this.updateLang.bind(this);
-    }
-
+    state = {
+        selectedLang: 'All',
+        repos: null
+    };
     componentDidMount () {
        this.updateLang(this.state.selectedLang);
     }
-    updateLang (langName) {
+    updateLang = (langName) => {
         this.setState(() => ({
             selectedLang: langName, repos: null
         }));

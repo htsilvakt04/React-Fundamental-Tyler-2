@@ -5,26 +5,20 @@ import PlayerInputForm from './PlayerInputForm';
 import PlayerInfo from './PlayerInfo';
 
 class Battle extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            playerOneName: '',
-            playerOneImg: null,
-            playerTwoImg: null,
-            playerTwoName: '',
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleReset = this.handleReset.bind(this);
+    state = {
+        playerOneName: '',
+        playerOneImg: null,
+        playerTwoImg: null,
+        playerTwoName: '',
     }
-
-    handleReset (id) {
+    handleReset = (id) => {
         this.setState(() => ({
             [id + 'Name']: '',
             [id + 'Img']: null
         }))
     }
 
-    handleSubmit (id, playerName) {
+    handleSubmit = (id, playerName) => {
         this.setState(() => ({
             [id + 'Name']: playerName,
             [id + 'Img']: `https://github.com/${playerName}.png?size=200`

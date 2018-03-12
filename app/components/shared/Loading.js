@@ -2,11 +2,8 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 
 class Loading extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            label: props.label
-        };
+    state = {
+        label: this.props.label
     }
 
     componentDidMount () {
@@ -29,17 +26,16 @@ class Loading extends React.Component {
             <p className='loading-label' style={this.props.style}>{this.state.label}</p>
         )
     }
+    static propTypes = {
+        label: PropTypes.string.isRequired,
+        style: PropTypes.object.isRequired,
+        intervalTime: PropTypes.number.isRequired
+    }
+    static defaultProps = {
+        label: 'Loading',
+        style: {color: '#00D1B2', textAlign: 'center'},
+        intervalTime: 200
+    }
 }
 
-Loading.propTypes = {
-    label: PropTypes.string.isRequired,
-    style: PropTypes.object.isRequired,
-    intervalTime: PropTypes.number.isRequired
-};
-
-Loading.defaultProps = {
-    label: 'Loading',
-    style: {color: '#00D1B2', textAlign: 'center'},
-    intervalTime: 200
-};
 export default Loading;
