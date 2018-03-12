@@ -14,14 +14,13 @@ class Popular extends React.Component {
     componentDidMount () {
        this.updateLang(this.state.selectedLang);
     }
-    updateLang = (langName) => {
+    updateLang = async (langName) => {
         this.setState(() => ({
             selectedLang: langName, repos: null
         }));
-
-        getHottestRepos(langName).then(repos => {
-           this.setState(() => ({repos}) );
-        });
+        
+        const repos = await getHottestRepos(langName);
+        this.setState(() => ({repos}) );
     }
 
     render () {

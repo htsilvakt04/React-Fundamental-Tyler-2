@@ -24,23 +24,22 @@ class ResultBattle extends React.Component {
         }
         return result;
     }
-    componentDidMount () {
+    async componentDidMount () {
         let {playerOne, playerTwo} = queryParser.parse(
             this.props.location.search
         );
-        getBattleResult([playerOne, playerTwo]).then(([winner, loser]) => {
-            // check error here
-            let hasError = this.isError(winner);
-            if(hasError === false) {
-                 //data[0] === winner; data[1] === loser
-                this.setState(() => ({
-                     loading: false,
-                     winner,
-                     loser,
-                     error: null
-                }));
-            } // end if
-        })
+        let [winner, loser] = await getBattleResult([playerOne, playerTwo]);
+        // check error here
+        let hasError = this.isError(winner);
+        if(hasError === false) {
+            //data[0] === winner; data[1] === loser
+            this.setState(() => ({
+                loading: false,
+                winner,
+                loser,
+                error: null
+            }));
+        }
     }
 
     render () {

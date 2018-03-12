@@ -2,11 +2,6 @@ let path = require('path');
 let HTML = require('html-webpack-plugin');
 let webpack = require('webpack');
 
-// NODE_ENV
-
-
-// ugli
-
 let config  = {
     entry: [ 'babel-polyfill', './app/index.js' ],
     output: {
